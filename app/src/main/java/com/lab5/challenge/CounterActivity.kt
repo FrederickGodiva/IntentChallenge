@@ -3,8 +3,6 @@ package com.lab5.challenge
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.lab5.challenge.databinding.ActivityCounterBinding
 
 class CounterActivity : AppCompatActivity() {
@@ -21,8 +19,8 @@ class CounterActivity : AppCompatActivity() {
         binding.tietNumber.setText(number.toString())
 
         binding.btnIncrement.setOnClickListener {
-            number = binding.tietNumber.text.toString().toInt()
-            binding.tietNumber.setText((number!! + 1).toString())
+            val currentNumber = binding.tietNumber.text.toString().toIntOrNull() ?: 0
+            binding.tietNumber.setText((currentNumber + 1).toString())
         }
 
 //        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
